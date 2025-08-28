@@ -1,4 +1,4 @@
-from motor.motor_asyncio import AsyncIOMotorClient # type: ignore
+from motor.motor_asyncio import AsyncIOMotorClient
 from app.config.env import ENV
 from typing import Optional
 import logging
@@ -35,7 +35,7 @@ class MongoDB:
             logger.info("Disconnected from MongoDB")
     
     def get_database(self):
-        if not self.database:
+        if self.database is None:
             raise RuntimeError("Database not connected. Call connect() first.")
         return self.database
     
